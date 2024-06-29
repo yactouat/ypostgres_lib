@@ -24,3 +24,18 @@ def get_conn():
         password=db_password,
         port=int(os.environ.get("POSTGRES_PORT")),
     )
+
+
+def run_parameterized_dql(conn, query: str, params: tuple):
+    """
+    Run a parameterized DQL statement and get the results.
+    """
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.execute(query, params)
+    results = cur.fetchall()
+
+    cur.close()
+    conn.close()
+
+    return results
