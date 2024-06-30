@@ -26,7 +26,7 @@ def get_conn():
     )
 
 
-def run_parameterized_dql(conn, query: str, params: tuple):
+def run_parameterized_dql(query: str, params: tuple):
     """
     Run a parameterized DQL statement and get the results.
     """
