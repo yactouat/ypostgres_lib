@@ -39,3 +39,18 @@ def run_parameterized_dql(query: str, params: tuple):
     conn.close()
 
     return results
+
+
+def run_static_dql(query: str):
+    """
+    Run a static DQL statement and get the results.
+    """
+    conn = get_conn()
+    cur = conn.cursor()
+
+    cur.execute(query)
+    result = cur.fetchall()
+
+    close_conn(conn, cur)
+
+    return result
