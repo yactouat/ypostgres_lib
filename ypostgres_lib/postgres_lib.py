@@ -26,6 +26,19 @@ def get_conn():
     )
 
 
+def run_static_dml(conn, query: str):
+    """
+    Run a static DML statement without getting the results.
+    """
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.execute(query)
+    conn.commit()
+
+    cur.close()
+    conn.close()
+
+
 def run_parameterized_dql(query: str, params: tuple):
     """
     Run a parameterized DQL statement and get the results.
