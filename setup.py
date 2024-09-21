@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="ypostgres_lib",
-    version="2.4.0",
+    version="2.5.0",
     packages=find_packages(),
     install_requires=["psycopg2-binary"],
     author="yactouat",

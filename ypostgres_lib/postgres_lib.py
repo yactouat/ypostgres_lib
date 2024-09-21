@@ -60,6 +60,17 @@ def run_paginated_parameterized_dql(
     return results
 
 
+def run_parameterized_batch_dml(query: str, params: list[tuple]) -> None:
+    """
+    Run a parameterized batch DML statement.
+    """
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.executemany(query, params)
+    conn.commit()
+    close_conn(conn, cur)
+
+
 def run_parameterized_item_dml(
     statement: str, params: tuple, with_results: bool = False
 ) -> list | None:
